@@ -5,10 +5,12 @@ require('dotenv').config();
 const port = process.env.PORT || 5000;
 
 // middleware
-app.use(cors());
+app.use(cors({
+  origin:"*",
+}));
 app.use(express.json());
 
-app.use('/openai', require('./routes/openaiApiRoutes'))
+app.use('/openai', require('./routes/openaiApiRoutes'));
 
 // default message
 app.get('/', (req, res) => {
